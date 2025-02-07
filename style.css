@@ -8,3 +8,27 @@ img {
     width: 100%;
     height: auto;
 }
+
+
+body {
+    background-color: rgb(101, 101, 101);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+canvas {
+    border: 1px solid black;
+    background-color: black;
+    width: 550px;
+    height: 450px;
+}
+
+h1 {
+    color: rgb(222, 39, 39);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
