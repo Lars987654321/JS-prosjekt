@@ -59,8 +59,6 @@ function drawBall(){
     ctx.arc(ball.x, ball.y , ball.radius, 0, Math.PI * 2)
     ctx.fillStyle = 'blue'
     ctx.fill()
-    
-    console.log(ball.x)
 }
 
 function updateBall(){
