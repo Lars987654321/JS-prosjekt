@@ -1,11 +1,15 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
+canvas.width = 550
+canvas.height = 450
+
+
 let paddleWidth = canvas.width / 4
-let paddleHeight = 10
+let paddleHeight = 20
 let paddleX = (canvas.width - paddleWidth) / 2
 let paddleY = canvas.height - paddleHeight - 5
-let paddlespeed = 3
+let paddlespeed = 8
 let rightPressed = false
 let leftPressed = false
 
@@ -41,11 +45,43 @@ function keyup(event){
     }
 }
 
+let ball = {
+    x: 200,
+    y: 200,
+    radius: 20,
+    dx: 6,
+    dy: 6,
+    color: "green"
+}
+
+function drawBall(){
+    ctx.beginPath()
+    ctx.arc(ball.x, ball.y , ball.radius, 0, Math.PI * 2)
+    ctx.fillStyle = 'blue'
+    ctx.fill()
+    
+    console.log(ball.x)
+}
+
+function updateBall(){
+    ball.x +=ball.dx
+    ball.y +=ball.dy
+
+    if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width){
+        ball.dx *=-1
+    } if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height){
+        ball.dy *=-1
+    }
+
+   
+}
+
 function gameloop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     drawPaddle()
     updatePaddle()
+    drawBall()
+    updateBall()
     requestAnimationFrame(gameloop)
 }
-
 gameloop()
